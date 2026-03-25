@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 1.125rem;
+    /* Background: #F7F7F5 */
+    --background: 0.974 0.003 100;
+    /* Foreground: #1A1A1A */
+    --foreground: 0.18 0 0;
+    /* Cards: white */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0 0;
+    /* Primary: sky blue #7EC7E6 */
+    --primary: 0.779 0.088 215;
+    --primary-foreground: 1 0 0;
+    /* Secondary: blush pink #F3A7B6 */
+    --secondary: 0.862 0.07 355;
+    --secondary-foreground: 0.18 0 0;
+    /* Muted */
+    --muted: 0.95 0.005 100;
+    --muted-foreground: 0.45 0 0;
+    /* Accent: cream yellow #F4D36A */
+    --accent: 0.862 0.12 88;
+    --accent-foreground: 0.18 0 0;
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 1 0 0;
+    --border: 0.92 0.005 100;
+    --input: 0.92 0.005 100;
+    --ring: 0.779 0.088 215;
+    --chart-1: 0.779 0.088 215;
+    --chart-2: 0.862 0.07 355;
+    --chart-3: 0.862 0.12 88;
+    --chart-4: 0.906 0.04 355;
+    --chart-5: 0.912 0.04 215;
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.18 0 0;
+    --sidebar-primary: 0.779 0.088 215;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.95 0.005 100;
+    --sidebar-accent-foreground: 0.18 0 0;
+    --sidebar-border: 0.92 0.005 100;
+    --sidebar-ring: 0.779 0.088 215;
+
+    /* School palette tokens */
+    --blush: 0.906 0.04 355;
+    --powder-blue: 0.912 0.04 215;
+    --cream-yellow: 0.952 0.05 95;
+    --sky-blue: 0.779 0.088 215;
+    --pink: 0.779 0.09 355;
+    --cta-yellow: 0.862 0.12 88;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.13);
+  }
+  .btn-hover {
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-hover:hover {
+    transform: scale(1.03);
+    filter: brightness(0.96);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  /* Signature heading accent */
+  .section-badge {
+    @apply inline-flex items-center gap-1.5 px-4 py-1.5 rounded-pill text-xs font-semibold tracking-wide uppercase mb-3;
+  }
+  .section-heading-accent {
+    @apply block w-12 h-1.5 rounded-pill mx-auto mt-3 mb-0;
+    background: linear-gradient(
+      90deg,
+      oklch(0.779 0.088 215),
+      oklch(0.862 0.07 355),
+      oklch(0.862 0.12 88)
+    );
+  }
+  /* Quote decoration for testimonials */
+  .quote-mark {
+    @apply absolute -top-2 -left-1 text-6xl leading-none font-black opacity-15 select-none pointer-events-none;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes blob-drift {
+  0%,
+  100% {
+    border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%;
+    transform: scale(1.04) rotate(3deg);
+  }
+  66% {
+    border-radius: 55% 45% 60% 40% / 40% 55% 45% 60%;
+    transform: scale(0.97) rotate(-2deg);
+  }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+.animate-float-delay {
+  animation: float 5s ease-in-out infinite 1.5s;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.animate-blob {
+  animation: blob-drift 8s ease-in-out infinite;
+}
